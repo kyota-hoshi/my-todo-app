@@ -13,14 +13,23 @@ export const MainArea = ({
     setTodoCardList(deletedCardList)
   }
 
+  const toggleDoneCheck = (todoCard) => {
+    const toggledCardList = [...todoCardList]
+    const toggledCardIndex = todoCardList.indexOf(todoCard)
+    toggledCardList[toggledCardIndex].doneFlag = !toggledCardList[toggledCardIndex].doneFlag
+
+    setTodoCardList(toggledCardList)
+  }
   return(
     <MainAreaWrap>
       <TodoCardList>
         {todoCardList && 
           todoCardList.map(todoCard => (
             <TodoCard
+              key={todoCard.id}
               todoCard={todoCard}
               onDeleteCard={() => deleteCard(todoCard)}
+              onClickDoneCheck={() => toggleDoneCheck(todoCard)}
             />
           ))
         }

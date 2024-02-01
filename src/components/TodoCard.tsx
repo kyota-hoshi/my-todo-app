@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const TodoCard = ({
   todoCard,
   onDeleteCard,
+  onClickDoneCheck,
 }) => {
   return (
     <TodoCardWrap>
@@ -12,7 +13,7 @@ export const TodoCard = ({
           opacity: todoCard.doneFlag ? 1 : 0.3,
           color: todoCard.doneFlag ? 'green': 'black',
         }}
-        onClick={() => {}}>️✔︎</DoneCheck>
+        onClick={onClickDoneCheck}>️✔︎</DoneCheck>
       <CardTitle>{todoCard.text}</CardTitle>
       <DeleteButton onClick={onDeleteCard}>×</DeleteButton>
     </TodoCardWrap>
@@ -30,7 +31,7 @@ const TodoCardWrap = styled.div`
   align-items: center;
 `
 
-const DoneCheck = styled.div`
+const DoneCheck = styled.button`
   font-size: 15px;
   cursor: pointer;
 `

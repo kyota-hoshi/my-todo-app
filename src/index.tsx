@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { createGlobalStyle } from 'styled-components'
 import { TodoApp } from './TodoApp'
 
@@ -27,4 +27,6 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-render(<App />, document.getElementById('app'))
+const container = document.getElementById('app')
+const root = createRoot(container)
+root.render(<App />)

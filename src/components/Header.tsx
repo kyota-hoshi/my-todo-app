@@ -1,11 +1,13 @@
 import * as React from "react";
 import styled from "styled-components";
 
-export const Header = () => {
+export const Header = ({
+  onAddClick,
+}) => {
   return (
     <HeaderWrap>
       <Title>My TODO</Title>
-      <AddButton>+</AddButton>
+      <AddButton onClick={onAddClick}>+</AddButton>
     </HeaderWrap>
   )
 }

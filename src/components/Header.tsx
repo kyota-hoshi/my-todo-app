@@ -1,13 +1,19 @@
 import * as React from "react";
 import styled from "styled-components";
+import { NavigateStyle } from "../styles/shared/navigateStyle";
 
-export const Header = ({
-  onAddClick,
-}) => {
+interface Props {
+  title: string
+  navigate: React.ReactNode
+}
+
+export const Header: React.FC<Props> = ({ title, navigate }) => {
   return (
     <HeaderWrap>
-      <Title>My TODO</Title>
-      <AddButton onClick={onAddClick}>+</AddButton>
+      <Title>{title}</Title>
+      <NavigateStyle>
+        {navigate}
+      </NavigateStyle>
     </HeaderWrap>
   )
 }
@@ -25,17 +31,4 @@ const Title = styled.div`
   margin: 0 15px;
   font-size: 35px;
   font-weight: bold;
-`
-
-const AddButton = styled.button`
-  height: 100%;
-  font-size: 40px;
-  margin: 0 15px;
-  color: gray;
-  line-height: 100%;
-  cursor: pointer;
-
-  &:hover {
-    color: black;
-  }
 `

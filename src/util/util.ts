@@ -1,7 +1,7 @@
 /**
  * ランダムな ID `[0-9A-Za-z_-]{12}` を作成する
  */
-export function randomID() {
+export function randomID(): string {
   const alphabet =
     '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz-'
 

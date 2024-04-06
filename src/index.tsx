@@ -1,31 +1,30 @@
 import * as React from 'react'
 import { createRoot } from 'react-dom/client'
-import { createGlobalStyle } from 'styled-components'
-import { TodoApp } from './TodoApp'
+import { TodoApp } from './pages/TodoApp'
+import { GabageBox } from './pages/GabageBox'
+import { GlobalStyle } from './styles/globalStyle'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom'
+import { UseCardsProvider } from './hooks/useCards'
 
 const App = () => {
   return (
-    <>
+    <UseCardsProvider>
       <GlobalStyle />
-      <TodoApp />
-    </>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<TodoApp />} />
+          <Route path='gabagebox' element={<GabageBox />} />
+          <Route path='*' element={<Navigate replace to='' />} />
+        </Routes>
+      </BrowserRouter>
+    </UseCardsProvider>
   )
 }
-
-const GlobalStyle = createGlobalStyle`
-  body * {
-    box-sizing: border-box;
-    padding: 0;
-    border: none;
-    background-color: white;
-    font-size: 20px;
-    font-weight: normal;
-  }
-
-  body {
-    margin: 0;
-  }
-`
 
 const container = document.getElementById('app')
 const root = createRoot(container)
